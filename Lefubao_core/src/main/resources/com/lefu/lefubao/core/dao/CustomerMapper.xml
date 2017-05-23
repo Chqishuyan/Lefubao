@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lefu.lefubao.core.dao.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.lefu.lefubao.model.entity.Customer" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="OPTIMISTIC" property="optimistic" jdbcType="INTEGER" />
+    <result column="AGENT_NO" property="agentNo" jdbcType="VARCHAR" />
+    <result column="FULL_NAME" property="fullName" jdbcType="VARCHAR" />
+    <result column="SHORT_NAME" property="shortName" jdbcType="VARCHAR" />
+    <result column="CUSTOMER_NO" property="customerNo" jdbcType="VARCHAR" />
+    <result column="MCC" property="mcc" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="ORGANIZATION_CODE" property="organizationCode" jdbcType="VARCHAR" />
+    <result column="PHONE_NO" property="phoneNo" jdbcType="VARCHAR" />
+    <result column="RECEIVE_ADDRESS" property="receiveAddress" jdbcType="VARCHAR" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CUST_TYPE" property="custType" jdbcType="VARCHAR" />
+    <result column="BUSSNESS_TYPE" property="bussnessType" jdbcType="VARCHAR" />
+    <result column="BUREGISTER_NO" property="buregisterNo" jdbcType="VARCHAR" />
+    <result column="PROD_TYPE" property="prodType" jdbcType="VARCHAR" />
+    <result column="EXT_ATT" property="extAtt" jdbcType="VARCHAR" />
+    <result column="IS_AUTH_SETTLE" property="isAuthSettle" jdbcType="VARCHAR" />
+    <result column="AUTH_SETTLE_PERSON" property="authSettlePerson" jdbcType="VARCHAR" />
+    <result column="AUTH_SETTLE_IDENTITYNO" property="authSettleIdentityno" jdbcType="VARCHAR" />
+    <result column="RECOMMENDER_NO" property="recommenderNo" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    ID, OPTIMISTIC, AGENT_NO, FULL_NAME, SHORT_NAME, CUSTOMER_NO, MCC, CREATE_DATE, ORGANIZATION_CODE, 
+    PHONE_NO, RECEIVE_ADDRESS, LINKMAN, STATUS, CUST_TYPE, BUSSNESS_TYPE, BUREGISTER_NO, 
+    PROD_TYPE, EXT_ATT, IS_AUTH_SETTLE, AUTH_SETTLE_PERSON, AUTH_SETTLE_IDENTITYNO, RECOMMENDER_NO
+  </sql>
+
+  <select id="queryList" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM  customer
+    WHERE RECOMMENDER_NO = #{recommenderNo,jdbcType=VARCHAR}
+  </select>
+
+</mapper>
